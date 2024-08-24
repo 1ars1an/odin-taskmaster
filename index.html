@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Master</title>
     <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+    <script type="module" src="main.js"></script>
 </head>
 <body>
     <div class="container">
@@ -17,6 +17,11 @@
             <div class="project-list">
                 <div class="new-project">
                     <button class="add-project">New Project</button>
+                    <div id="new-project" style="display: none;">
+                        <input type="text" class="project-name">
+                        <button class="project-submit"></button>
+                        <button class="project-cancel"></button>
+                    </div>
                 </div>
             </div>
         </div>
