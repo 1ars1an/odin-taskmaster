@@ -62,6 +62,52 @@ body {
     background-color: rgba(182, 146, 194, 0.4);
 }
 
+#new-project {
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project-name {
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid black;
+    width: 85%;
+    align-self: center;
+}
+
+.btn-box {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.btn-box button {
+    padding: 2px 5px;
+    border-radius: 4px;
+    background-color: rgba(255, 78, 136, 0.4);
+}
+
+.user-projects {
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+}
+
+.dynamic-project {
+    background-color: var(--MAIN-COLOR);
+    width: 100%;
+}
+
+.active {
+    background-color: green;
+    border: 1px solid purple;
+}
 
 .content {
     display: grid;

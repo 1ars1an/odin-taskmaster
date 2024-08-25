@@ -1,9 +1,12 @@
 import { createProject, storeProjects } from "./logic.js";
 
 const projectDom = (() => {
-    const projects = document.querySelector('.new-project');
+    const sidebar = document.querySelector('.sidebar');
     const newProjects = document.getElementById('new-project');
-    const projectName = document.querySelector('project-submit');
+    const projectName = document.querySelector('.project-name');
+    const projectSubmit = document.querySelector('.project-submit');
+    const projectCancel = document.querySelector('.project-cancel');
+    const userProjects = document.querySelector('.user-projects'); 
 
     function show() {
         newProjects.style.display = 'flex';
@@ -23,6 +26,8 @@ const projectDom = (() => {
         }
         hide();
         storeProjects();
+        clear();
+        console.log('i ran');
     }
 
     return {
@@ -30,6 +35,11 @@ const projectDom = (() => {
         hide,
         clear,
         addProject,
+        sidebar,
+        newProjects,
+        projectSubmit,
+        projectCancel,
+        userProjects,
     }
 
 })();

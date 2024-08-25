@@ -9,7 +9,7 @@ function createProject(name) {
     });
 }
 
-function activeProject() {
+function getActiveProject() {
     return allProjects.filter(project => project.active)[0];
 }
 
@@ -21,4 +21,4 @@ function storeProjects() {
     localStorage.setItem('user', JSON.stringify(allProjects));
 }
 
-export {createProject, clearActiveProjects, storeProjects}
+export {createProject, getActiveProject, clearActiveProjects, storeProjects}

@@ -1,21 +1,26 @@
 import { projectDom } from "./domMethods.js";
-import { clearActiveProjects } from "./logic.js";
+import { renderProjects } from "./render.js";
 
-function createProjectListeners() {
-    const projects = document.querySelector('.new-project');
-    const newProjects = document.getElementById('new-project');
-    const projectName = document.querySelector('project-submit');
-    const projectItems = document.querySelectorAll('.project-item');
+projectDom.sidebar.addEventListener('click', (e) => {
+    if (e.target.classList.contains('add-task')) {
+        console.log('monkey');
+    }
 
-    projects.addEventListener('click', (e) => {
-        if (e.target.classList.contains('add-project')) {
-            projectName.style.display === 'none' ? projectDom.show() : projectDom.hide();
-        }
+    else if (e.target.classList.contains('home-btn')) {
+        console.log('epstein');
+    }
 
-        else if (e.target.classList.contains('project-item')) {
+    else if (e.target.classList.contains('add-project')) {
+        projectDom.newProjects.style.display === 'none' ? projectDom.show() : projectDom.hide();
+    }
 
-        }
-    })
-}
+    else if (e.target.classList.contains('project-submit')) {
+        projectDom.addProject();
+        renderProjects();
+    }
 
-export {createProjectListeners}
+    else if (e.target.classList.contains('project-cancel')) {
+        projectDom.clear();
+        projectDom.newProjects.style.display = 'none';
+    }
+})
