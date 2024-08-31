@@ -1,4 +1,4 @@
-import { createProject, storeProjects } from "./logic.js";
+import { createProject, createTask, storeProjects } from "./logic.js";
 
 const projectDom = (() => {
     const sidebar = document.querySelector('.sidebar');
@@ -27,7 +27,6 @@ const projectDom = (() => {
         hide();
         storeProjects();
         clear();
-        console.log('i ran');
     }
 
     return {
@@ -44,4 +43,53 @@ const projectDom = (() => {
 
 })();
 
-export {projectDom}
+const gridDom = (() => {
+    const grid = document.querySelector('.content');
+
+    return {
+        grid,
+    }
+
+})();
+
+const modalDom = (() => {
+    const modal = document.getElementById('taskModal');
+    const closeBtn = document.querySelector('.close');
+    const taskForm = document.getElementById('taskForm');
+
+    const taskName = document.getElementById('taskName');
+    const taskDescription = document.getElementById('taskDescription');
+    //const taskPriority = document.querySelector('input[name="priority"]:checked');
+
+    function show() {
+        modal.style.display = 'block';
+    }
+
+    function hide() {
+        modal.style.display = 'none';
+        taskName.value = '';
+        taskDescription.value = '';
+        document.querySelector('input[name="priority"]:checked').checked = false;
+    }
+
+    function addTask() {
+        if (taskName.value) {
+            const taskPriority = document.querySelector('input[name="priority"]:checked');
+            createTask(taskName.value, taskDescription.value, taskPriority.value);
+            hide();
+            storeProjects();
+        }
+    }
+
+    return {
+        modal,
+        closeBtn,
+        taskForm,
+        show,
+        hide,
+        addTask,
+    }
+
+})();
+
+export {projectDom, modalDom, gridDom}

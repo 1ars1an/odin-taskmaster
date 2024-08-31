@@ -1,4 +1,5 @@
 import { allProjects } from "../main.js";
+import { renderProjects, renderTasks } from "./render.js";
 
 function createProject(name) {
     clearActiveProjects();
@@ -7,6 +8,8 @@ function createProject(name) {
         taskList: [],
         active: true,
     });
+    renderProjects();
+    renderTasks();
 }
 
 function getActiveProject() {
@@ -17,8 +20,26 @@ function clearActiveProjects() {
     allProjects.forEach((project) => project.active = false);
 }
 
+function switchActiveProject(index) {
+    clearActiveProjects();
+    allProjects[index].active = true;
+    renderProjects();
+    renderTasks();
+}
+
 function storeProjects() {
     localStorage.setItem('user', JSON.stringify(allProjects));
 }
 
-export {createProject, getActiveProject, clearActiveProjects, storeProjects}
+function createTask(name, description, priority) {
+    getActiveProject().taskList.push({
+        name, 
+        description, 
+        priority, 
+        complete: false,
+    });
+    renderProjects();
+    renderTasks();
+}
+
+export {createProject, getActiveProject, clearActiveProjects, switchActiveProject, storeProjects, createTask}

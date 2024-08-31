@@ -1,9 +1,9 @@
-import { projectDom } from "./domMethods.js";
-import { renderProjects } from "./render.js";
+import { projectDom, modalDom } from "./domMethods.js";
+import { renderProjects, renderTasks } from "./render.js";
 
 projectDom.sidebar.addEventListener('click', (e) => {
     if (e.target.classList.contains('add-task')) {
-        console.log('monkey');
+        modalDom.show();
     }
 
     else if (e.target.classList.contains('home-btn')) {
@@ -24,3 +24,17 @@ projectDom.sidebar.addEventListener('click', (e) => {
         projectDom.newProjects.style.display = 'none';
     }
 })
+
+modalDom.closeBtn.addEventListener('click', () => modalDom.hide());
+
+window.onclick = (event) => {
+    if (event.target == modalDom.modal) {
+        modalDom.modal.style.display = 'none';
+    }
+}
+
+modalDom.taskForm.onsubmit = (e) => {
+    e.preventDefault();
+    modalDom.addTask();
+    renderTasks();
+}
